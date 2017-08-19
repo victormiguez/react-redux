@@ -21,9 +21,7 @@ class App extends Component {
             currentTodo={this.props.currentTodo}
             changeCurrent={this.props.updateCurrent}
           />
-          <TodoList
-            todos={this.props.todos}
-          />
+          <TodoList />
         </div>
       </div>
     );
