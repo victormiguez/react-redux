@@ -12,6 +12,7 @@ export default ({ currentTodo, changeCurrent }) => {
         type="text"
         value={currentTodo}
         onChange={handleInputChange}
+        autoFocus
       />
     </form>
   );
