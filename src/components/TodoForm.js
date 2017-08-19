@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default ({ currentTodo, changeCurrent }) => {
+import { updateCurrent } from '../reducers/todo';
+
+const TodoForm = ({ currentTodo, updateCurrent }) => {
   const handleInputChange = (event) => {
     const value = event.target.value;
-    changeCurrent(value);
+    updateCurrent(value);
   }
 
   return (
@@ -17,3 +20,11 @@ export default ({ currentTodo, changeCurrent }) => {
     </form>
   );
 }
+
+const mapStateToProps = (state) => ({
+  currentTodo: state.currentTodo,
+});
+
+const mapDispatchToProps = { updateCurrent };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import logo from './logo.svg';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import { updateCurrent } from './reducers/todo';
 
 import './App.css';
 
@@ -17,10 +15,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <div className="Todo-App">
-          <TodoForm
-            currentTodo={this.props.currentTodo}
-            changeCurrent={this.props.updateCurrent}
-          />
+          <TodoForm />
           <TodoList />
         </div>
       </div>
@@ -28,7 +23,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => state;
-const mapDispatchToProps = { updateCurrent };
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
