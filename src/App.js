@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
-import './App.css';
+import { bindActionCreators } from 'redux';
 
+import logo from './logo.svg';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import { updateCurrent } from './reducers/todo';
+
+import './App.css';
 
 class App extends Component {
   render() {
@@ -17,7 +20,7 @@ class App extends Component {
         <div className="Todo-App">
           <TodoForm
             currentTodo={this.props.currentTodo}
-            changeCurrent={this.props.changeCurrent}
+            changeCurrent={this.props.updateCurrent}
           />
           <TodoList
             todos={this.props.todos}
@@ -29,6 +32,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => state;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  updateCurrent,
+}, dispatch);
 
-const ConnectedApp = connect(mapStateToProps)(App);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 export default ConnectedApp;
