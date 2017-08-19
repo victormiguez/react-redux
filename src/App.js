@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import logo from './logo.svg';
 import TodoForm from './components/TodoForm';
@@ -32,9 +31,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  updateCurrent,
-}, dispatch);
+const mapDispatchToProps = { updateCurrent };
 
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
-export default ConnectedApp;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
