@@ -1,4 +1,4 @@
-import { getTodos } from '../lib/todoServices';
+import { getTodos, createTodo } from '../lib/todoServices';
 
 const TODOS_LOAD = 'TODOS_LOAD';
 const TODO_ADD = 'TODO_ADD';
@@ -19,10 +19,22 @@ export const loadTodos = (todos) => ({
   payload: todos,
 })
 
+export const addTodo = (todo) => ({
+  type: TODO_ADD,
+  payload: todo,
+})
+
 export const fetchTodos = () => {
   return (dispatch) => {
     getTodos()
       .then(todos => dispatch(loadTodos(todos)));
+  }
+}
+
+export const saveTodo = (name) => {
+  return (dispatch) => {
+    createTodo(name)
+      .then(response => dispatch(addTodo(response)));
   }
 }
 
@@ -37,6 +49,7 @@ export default (state = initState, action) =>  {
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        currentTodo: '',
       }
     case CURRENT_UPDATE:
       return {
