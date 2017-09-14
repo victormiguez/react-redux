@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import Message from './components/Message';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <div className="Todo-App">
+          <Message />
           <TodoForm />
           <TodoList />
         </div>
